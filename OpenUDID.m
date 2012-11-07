@@ -177,6 +177,7 @@ static int const kOpenUDIDRedundancySlots = 100;
         CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
         CFStringRef cfstring = CFUUIDCreateString(kCFAllocatorDefault, uuid);
         const char *cStr = CFStringGetCStringPtr(cfstring,CFStringGetFastestEncoding(cfstring));
+        CFRelease(cfstring);
         unsigned char result[16];
         CC_MD5( cStr, strlen(cStr), result );
         CFRelease(uuid);
